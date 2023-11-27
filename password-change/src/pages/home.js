@@ -3,7 +3,7 @@ import React from 'react';
 import { useMutation, gql } from '@apollo/client';
 
 const CHANGE_PASSWORD = gql`
-    mutation ChangePassword($token: String!, $newPassword: String!) {
+    mutation Mutation($newPassword: String!) {
         changePassword(newPassword: $newPassword)
     }
 `;
