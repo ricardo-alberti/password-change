@@ -7,7 +7,7 @@ const Pages = () => {
     return (
         <Router>
             <Routes>
-                <Route exact path='/' Component={Home} />
+                <Route path='/:token' Component={Home} />
             </Routes>
         </Router>
     )

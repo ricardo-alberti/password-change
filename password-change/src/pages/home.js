@@ -1,25 +1,45 @@
 import React from 'react';
 
-function checkPasswordIsEqual(pass1, pass2){
-    const passwordValue1 = document.getElementById('pass1').value
-    const passwordValue2 = document.getElementById('pass2').value
+import { useMutation, gql } from '@apollo/client';
 
-    if (passwordValue1 === passwordValue2){
-        validateToken()
-        return true
+const CHANGE_PASSWORD = gql`
+    mutation ChangePassword($token: String!, $newPassword: String!) {
+        changePassword(token: $token, newPassword: $newPassword)
     }
-
-    return false
-}
-
-function validateToken(){
-    const currentURL = window.location.href;
-    const token = currentURL.split('/').pop()
-
-    console.log(token)
-}
+`;
 
 const Home = () => {
+    const [changePassword, { data, loading, error }] = useMutation(CHANGE_PASSWORD)
+
+    if (error) return <p>Erro ao trocar senha</p>
+    if (loading) return <p>Carregando...</p>
+    if (data) {console.log(data)}
+
+    function checkPasswordIsEqual(pass1, pass2){
+        const passwordValue1 = document.getElementById('pass1').value
+        const passwordValue2 = document.getElementById('pass2').value
+
+        if (passwordValue1 === passwordValue2){
+            validateToken(passwordValue1)
+            return true
+        }
+
+        return false
+    }
+
+    function validateToken( newPassword ){
+        const currentURL = window.location.href;
+        const token = currentURL.split('/').pop()
+
+        changePassword({
+            variables: {
+                token: token,
+                newPassword: newPassword
+            }
+        })
+
+    }
+
     return (
         <div class='flex-col text-center items-center w-80'>
             <h1 class='p-10 text-lg'>Alteração de senha</h1>

@@ -1,13 +1,22 @@
 import React from 'react';
-import './App.css';
+import { ApolloProvider, ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
+import './App.css';
 import Pages from './pages';
+
+const uri = 'https://surya-yoga-api.vercel.app/api';
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({
+    uri, 
+    cache,
+})
 
 function App() {
     return (
-        <div>
+        <ApolloProvider client={client}>
             <Pages />
-        </div>
+        </ApolloProvider>
     );
 }
 
