@@ -20,24 +20,19 @@ const Home = () => {
         const passwordValue2 = document.getElementById('pass2').value
 
         if (passwordValue1 === passwordValue2){
-            validateToken(passwordValue1)
+            updatePassword(passwordValue1)
             return true
         }
 
         return false
     }
 
-    function validateToken( newPassword ){
-        const currentURL = window.location.href;
-        const token = currentURL.split('/').pop()
-
+    function updatePassword(newPassword ){
         changePassword({
             variables: {
-                token: token,
                 newPassword: newPassword
             }
         })
-
     }
 
     return (
