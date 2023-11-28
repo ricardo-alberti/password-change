@@ -24,7 +24,6 @@ const Home = () => {
 
         if (passwordValue1 === passwordValue2){
             updatePassword(passwordValue1)
-            return true
         }
 
         return false
