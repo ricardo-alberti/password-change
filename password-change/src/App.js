@@ -1,29 +1,14 @@
 import React from 'react';
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from 'apollo-link-context';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 import './App.css';
 import Pages from './pages';
 
-const uri = 'https://surya-yoga-api.vercel.app/api';
+const uri = 'http://localhost:8000/api';
 const cache = new InMemoryCache();
-const httpLink = createHttpLink({ uri });
-
-const currentURL = window.location.href;
-const token = currentURL.split('/').pop()
-
-const authlink = setContext(async (_, { headers }) => {
-        return {
-            headers: {
-                ...headers,
-                authorization: token || ''
-            } 
-        } 
-    }
-)
 
 const client = new ApolloClient({
-    link: authlink.concat(httpLink),
+    uri, 
     cache,
 })
 

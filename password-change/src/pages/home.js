@@ -3,12 +3,15 @@ import React from 'react';
 import { useMutation, gql } from '@apollo/client';
 
 const CHANGE_PASSWORD = gql`
-    mutation Mutation($newPassword: String!) {
-        changePassword(newPassword: $newPassword)
+    mutation Mutation($token: String!, $newPassword: String!) {
+        changePassword(token: $token, newPassword: $newPassword)
     }
 `;
 
 const Home = () => {
+    const currentURL = window.location.href;
+    const token = currentURL.split('/').pop()
+
     const [changePassword, { data, loading, error }] = useMutation(CHANGE_PASSWORD)
 
     if (error) return <p>Erro ao trocar senha</p>
@@ -30,7 +33,8 @@ const Home = () => {
     function updatePassword(newPassword ){
         changePassword({
             variables: {
-                newPassword: newPassword
+                newPassword: newPassword,
+                token: token
             }
         })
     }
