@@ -30,6 +30,7 @@ const Home = () => {
     }
 
     function updatePassword(newPassword ){
+        console.log(token, newPassword)
         changePassword({
             variables: {
                 newPassword: newPassword,
