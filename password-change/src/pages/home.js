@@ -26,10 +26,10 @@ const Home = () => {
             updatePassword(passwordValue1)
         }
 
-        return false
+        return <p>Senhas não iguais</p>
     }
 
-    function updatePassword(newPassword ){
+    function updatePassword(newPassword){
         console.log(token, newPassword)
         changePassword({
             variables: {
