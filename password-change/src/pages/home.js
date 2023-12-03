@@ -14,9 +14,9 @@ const Home = () => {
 
     const [changePassword, { data, loading, error }] = useMutation(CHANGE_PASSWORD)
 
-    if (error) return {console.log(error)}
+    if (error) return console.log(error)
     if (loading) return <p>Carregando...</p>
-    if (data) {console.log(data)}
+    if (data) console.log(data)
 
     function checkPasswordIsEqual(pass1, pass2){
         const passwordValue1 = document.getElementById('pass1').value
