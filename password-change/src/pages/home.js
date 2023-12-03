@@ -10,7 +10,7 @@ const CHANGE_PASSWORD = gql`
 
 const Home = () => {
     const currentURL = window.location.href;
-    const token = currentURL.split('/').pop()
+    const token = currentURL.split('/').pop().toString()
 
     const [changePassword, { data, loading, error }] = useMutation(CHANGE_PASSWORD)
 
