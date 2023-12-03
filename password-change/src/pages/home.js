@@ -14,7 +14,7 @@ const Home = () => {
 
     const [changePassword, { data, loading, error }] = useMutation(CHANGE_PASSWORD)
 
-    if (error) return <p>Erro ao trocar senha</p>
+    if (error) return {console.log(error)}
     if (loading) return <p>Carregando...</p>
     if (data) {console.log(data)}
 
