@@ -18,7 +18,7 @@ const Home = () => {
     if (loading) return <p>Carregando...</p>
     if (data) console.log(data)
 
-    function checkPasswordIsEqual(pass1, pass2){
+    function checkPasswordIsEqual(){
         const passwordValue1 = document.getElementById('pass1').value
         const passwordValue2 = document.getElementById('pass2').value
 
@@ -33,7 +33,7 @@ const Home = () => {
         console.log(token, newPassword)
         changePassword({
             variables: {
-                newPassword: newPassword,
+                newPassword: '2626',
                 token: token
             }
         })
@@ -53,7 +53,7 @@ const Home = () => {
                 <input id='pass2' type="text" class="p-2 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-black-500 focus:border-blue-500" required />
             </div>
 
-            <button class='w-20 h-10 rounded-lg border border-gray-300' onClick={()=>checkPasswordIsEqual('pass1', 'pass2')}>Enviar</button>
+            <button class='w-20 h-10 rounded-lg border border-gray-300' onClick={checkPasswordIsEqual}>Enviar</button>
         </div>
     )
 };
