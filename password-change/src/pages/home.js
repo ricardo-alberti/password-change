@@ -33,7 +33,7 @@ const Home = () => {
         console.log(token, newPassword)
         changePassword({
             variables: {
-                token: 'oi',
+                token: token,
                 newPassword: '2626'
             }
         })
