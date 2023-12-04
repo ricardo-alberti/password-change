@@ -6,7 +6,7 @@ import { setContext } from 'apollo-link-context';
 import './App.css';
 import Pages from './pages';
 
-const uri = 'http://localhost:8000/api';
+const uri = 'https://surya-yoga-api.vercel.app/api';
 const cache = new InMemoryCache();
 const httpLink = createHttpLink({ uri });
 
