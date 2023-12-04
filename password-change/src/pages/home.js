@@ -34,7 +34,7 @@ const Home = () => {
         changePassword({
             variables: {
                 token: token,
-                newPassword: '2626'
+                newPassword: newPassword
             }
         })
     }
