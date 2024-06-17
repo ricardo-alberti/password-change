@@ -16,7 +16,7 @@ const Home = () => {
 
     if (error) return console.log(error)
     if (loading) return <p>Carregando...</p>
-    if (data) console.log(data)
+    if (data) return <p>Senha trocada com sucesso</p>
 
     function checkPasswordIsEqual(){
         const passwordValue1 = document.getElementById('pass1').value
